@@ -1,7 +1,7 @@
 pipeline {
     agent any
     tools {
-        maven 'M3_8_6'
+        maven 'maven_3_8_6'
     }
     stages {
         
@@ -16,8 +16,8 @@ pipeline {
                 dir("kitchen-service/"){
                     withCredentials([[$class: 'UsernamePasswordMultiBinding', credentialsId: 'docker_hub', usernameVariable: 'USERNAME', passwordVariable: 'PASSWORD']]) {
                         sh 'docker login -u $USERNAME -p $PASSWORD'
-                        sh "docker build -t ingjavierr/kitchen-service:latest ."
-                        sh 'docker push ingjavierr/kitchen-service:latest'
+                        sh "docker build -t juanddtr/kitchen-service:latest ."
+                        sh 'docker push juanddtr/kitchen-service:latest'
                     }
                 }
             }
@@ -34,8 +34,8 @@ pipeline {
                 dir("order-service/"){
                     withCredentials([[$class: 'UsernamePasswordMultiBinding', credentialsId: 'docker_hub', usernameVariable: 'USERNAME', passwordVariable: 'PASSWORD']]) {
                         sh 'docker login -u $USERNAME -p $PASSWORD'
-                        sh "docker build -t ingjavierr/order-service:latest ."
-                        sh 'docker push ingjavierr/order-service:latest'
+                        sh "docker build -t juanddtr/order-service:latest ."
+                        sh 'docker push juanddtr/order-service:latest'
                     }
                 }
             }
@@ -52,8 +52,8 @@ pipeline {
                 dir("payment-service/"){
                     withCredentials([[$class: 'UsernamePasswordMultiBinding', credentialsId: 'docker_hub', usernameVariable: 'USERNAME', passwordVariable: 'PASSWORD']]) {
                         sh 'docker login -u $USERNAME -p $PASSWORD'
-                        sh "docker build -t ingjavierr/payment-service:latest ."
-                        sh 'docker push ingjavierr/payment-service:latest'
+                        sh "docker build -t juanddtr/payment-service:latest ."
+                        sh 'docker push juanddtr/payment-service:latest'
                     }
                 }
             }
