@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
       - name: payment-container
-        image: ingjavierr/payment-service:latest
+        image: juandd/payment-service:latest
         ports:
         - containerPort: 8300
         imagePullPolicy: Always

@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
       - name: kitchen-container
-        image: ingjavierr/kitchen-service:latest
+        image: juandd/kitchen-service:latest
         ports:
         - containerPort: 8200
         imagePullPolicy: Always
