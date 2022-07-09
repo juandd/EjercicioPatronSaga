@@ -39,18 +39,25 @@ public class OrderFacade implements IOrderFacade {
         Date date = new Date();
 
         OrderEventTO event = new OrderEventTO();
+        event.setUuid(uuid);
+        event.setDateTime(date);
+        event.setDescription(order.getDescription());
+        event.setQuantity(order.getQuantity());
         
-
         OrderDO orderDO = new OrderDO();
+        orderDO.setUuid(uuid);
+        orderDO.setDatetime(date);
+        orderDO.setStatus("APPROVAL_PENDING");
+        orderDO.setDescription(order.getDescription());
         
 
         orderDAO.save(orderDO);
-        // kafkaTemplate.send("order_events", event);
+        kafkaTemplate.send("order_events", event);
         return event;
     }
 
     @Override
     public void approveOrder(PaymentEventTO payment) {
-        
+        orderDAO.setStatusForOrderDO("APPROVED", payment.getUuid());
     }
 }
