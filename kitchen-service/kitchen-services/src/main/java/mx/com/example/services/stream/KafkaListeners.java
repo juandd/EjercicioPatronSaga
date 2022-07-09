@@ -45,6 +45,6 @@ public class KafkaListeners {
         LOG.info("Time" + payment.getDateTime());
         LOG.info("Status" + payment.getStatus());
 
-        // kitchenFacade.approveTicket(payment);
+        kitchenFacade.approveTicket(payment);
     }
 }
